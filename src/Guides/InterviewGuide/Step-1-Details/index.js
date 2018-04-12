@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Form, Input, Icon, Button, AutoComplete, Divider, Row, Col } from 'antd';
 import InterviewType from './InterviewType';
 import InterviewForm from './InterviewForm';
@@ -59,7 +60,7 @@ const Details = props => {
             <Button>GEM KLADDE</Button>
           </Col>
           <Col span={12} style={{textAlign: 'right'}}>
-            <Button type="primary">NÆSTE</Button>
+            <Button type="primary"><Link style={{ color: 'inherit' }} to='/2'>NÆSTE</Link></Button>
           </Col>
         </Row>
       </FormItem>
