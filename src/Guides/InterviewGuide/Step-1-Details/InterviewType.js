@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import RadioButtonGroup from '../../Components/RadioButtonGroup';
+import RadioButtonGroup from '../../../Components/RadioButtonGroup';
 
 class InterviewType extends Component {
   render() {
