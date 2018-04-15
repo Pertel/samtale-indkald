@@ -1,9 +1,51 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Row, Col } from 'antd';
+import Step from './Step';
+import { Timeline } from 'antd';
 
 class Guide extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentStep: 0
+    };
+  }
+
+  setCurrentStep( id ) {
+    this.setState({
+      currentStep: id
+    });
+  }
+
+  renderTimeline() {
+    let {steps} = this.props;
+    let {currentStep} = this.state;
+
+    const timelineItems = steps.map( (step, id) => {
+      const linkStyle = {color: id === currentStep ? '#1890FF' : 'inherit'};
+
+      return <Timeline.Item color={id === currentStep ? 'blue' : 'gray'} key={id}>
+        <a onClick={() => this.setCurrentStep( id )} style={linkStyle}>
+          {step.props.title}
+        </a>
+      </Timeline.Item> } );
+
+    const timeline =
+      <Timeline>
+        {timelineItems}
+      </Timeline>;
+
+    return timeline;
+  }
+
   render() {
-    let {content, left, right, title} = this.props;
+    let {title, steps} = this.props;
+    let {currentStep} = this.state;
+    if( !steps || currentStep > steps.length ) {
+      return;
+    }
+    let step = steps[currentStep];
 
     return (
       <div style={{margin: 5, border: '1px solid silver'}}>
@@ -16,21 +58,19 @@ class Guide extends Component {
 
         <Row style={{paddingTop: 25, paddingLeft: 10}}>
           <Col span={3}>
-            {left}
+            {this.renderTimeline()}
           </Col>
-
-          <Col span={15} style={{paddingRight: 100}}>
-            {content}
-          </Col>
-
-          <Col span={6} style={{paddingRight: 5}}>
-            {right}
-          </Col>
+          {step}
         </Row>
 
       </div>
     );
   }
 }
+
+Guide.propTypes = {
+  title: PropTypes.string.isRequired,
+  steps: PropTypes.arrayOf(PropTypes.element).isRequired,
+};
 
 export default Guide;

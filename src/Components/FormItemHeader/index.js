@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tooltip, Icon } from 'antd';
+import PropTypes from 'prop-types';
 
 const FormItemHeader = (props) => {
   let {tooltip, label} = props;
@@ -12,6 +13,11 @@ const FormItemHeader = (props) => {
       </Tooltip>}
     </div>
   );
+};
+
+FormItemHeader.propTypes = {
+  label: PropTypes.string.isRequired,
+  tooltip: PropTypes.string,
 };
 
 export default FormItemHeader;

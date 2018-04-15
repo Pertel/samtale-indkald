@@ -1,5 +1,6 @@
 import React from 'react';
 import { Row, Col, Radio } from 'antd';
+import PropTypes from 'prop-types';
 const RadioGroup = Radio.Group;
 
 const RadioButtonGroup = (props) => {
@@ -28,6 +29,11 @@ const RadioButtonGroup = (props) => {
       {optionRows}
     </RadioGroup>
   );
+};
+
+RadioButtonGroup.PropTypes = {
+  options: PropTypes.arrayOf( PropTypes.element ).isRequired,
+  noCols: PropTypes.number
 };
 
 export default RadioButtonGroup;

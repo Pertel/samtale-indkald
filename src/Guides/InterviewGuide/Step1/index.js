@@ -5,6 +5,7 @@ import InterviewType from './InterviewType';
 import InterviewForm from './InterviewForm';
 import FormItemHeader from '../../../Components/FormItemHeader'
 import YesNoRadioGroup from '../../../Components/RadioButtonGroup/YesNoRadioGroup';
+import FormHeader from '../../../Components/FormHeader';
 
 const FormItem = Form.Item;
 const usersDataSource = ['Henrik Lehmann Thomsen', 'Jennica Falk', 'Simon Kohrtz'];
@@ -13,6 +14,7 @@ const Details = props => {
   return (
     <Form>
       <h3 style={{paddingBottom: 20}}>Samtaletype og form</h3>
+      <FormHeader text='Samtaletype og form' />
       <FormItem>
         <FormItemHeader label='Samtaletype' tooltip='Huh??' />
         <InterviewType />
@@ -25,7 +27,7 @@ const Details = props => {
 
       <Divider />
 
-      <h3 style={{paddingBottom: 20}}>Deltagere</h3>
+      <FormHeader text='Deltagere' />
       <FormItem>
         <FormItemHeader label='Borger' />
         Jonjel Ruperth Vvedenskaia
@@ -60,7 +62,7 @@ const Details = props => {
             <Button>GEM KLADDE</Button>
           </Col>
           <Col span={12} style={{textAlign: 'right'}}>
-            <Button type="primary"><Link style={{ color: 'inherit' }} to='/2'>NÆSTE</Link></Button>
+            <Button type="primary">NÆSTE</Button>
           </Col>
         </Row>
       </FormItem>
